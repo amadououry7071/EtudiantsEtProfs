@@ -1,0 +1,11 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+
+# SQL Server local DB
+*.mdf
+*.ldf
+
+# App_Data (optionnel mais recommandé)
+App_Data/
