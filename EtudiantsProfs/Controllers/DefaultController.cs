@@ -27,5 +27,21 @@ namespace EtudiantsProfs.Controllers
 
             return View();
         }
+
+        public ActionResult Index2()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index2(Prof e)
+        {
+            db = new EtudProdDbContext();
+
+            db.profs.Add(new Prof { Name = e.Name, cour = e.cour });
+            db.SaveChanges();
+
+            return View();
+        }
     }
 }
