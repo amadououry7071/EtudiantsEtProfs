@@ -1,4 +1,4 @@
-﻿@model EtudiantsProfs.Models.Prof
+﻿@model EtudiantsProfs.Models.Etudiant
 
 @{
     Layout = null;
@@ -17,7 +17,7 @@
         @Html.AntiForgeryToken()
         
         <div class="form-horizontal">
-            <h4>Prof</h4>
+            <h4>Etudiant</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -29,10 +29,26 @@
             </div>
     
             <div class="form-group">
-                @Html.LabelFor(model => model.cour, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Interet, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.cour, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.cour, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Interet, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Interet, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.MotDePasse, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MotDePasse, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MotDePasse, "", new { @class = "text-danger" })
                 </div>
             </div>
     

@@ -14,6 +14,7 @@ namespace EtudiantsProfs.Controllers
         // GET: Default
         public ActionResult Index()
         {
+            db = new EtudProdDbContext();
             
             return View();
         }
@@ -21,11 +22,14 @@ namespace EtudiantsProfs.Controllers
         public ActionResult Index(Etudiant e)
         {
             db = new EtudProdDbContext();
+            db.etudiants.Count();
+            int a = 12;
+            
 
-            db.etudiants.Add(new Etudiant { Name = e.Name, interet=e.interet });
-            db.SaveChanges();
+           // db.etudiants.Add(new Etudiant { Name = e.Name, Interet=e.Interet });
+            //db.SaveChanges();
 
-            return View();
+            return RedirectToAction("index", "Connexion");
         }
 
         public ActionResult Index2()
@@ -38,10 +42,10 @@ namespace EtudiantsProfs.Controllers
         {
             db = new EtudProdDbContext();
 
-            db.profs.Add(new Prof { Name = e.Name, cour = e.cour });
+            db.profs.Add(new Prof { Name = e.Name, Cour = e.Cour });
             db.SaveChanges();
 
-            return View();
+            return RedirectToAction("index", "Connexion");
         }
     }
 }

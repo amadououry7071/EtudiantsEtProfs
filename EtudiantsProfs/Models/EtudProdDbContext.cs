@@ -11,5 +11,10 @@ namespace EtudiantsProfs.Models
         public DbSet<Etudiant> etudiants {  get; set; }
         public DbSet<Prof> profs { get; set; }
 
+        public EtudProdDbContext()
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EtudiantsProfs.Models.EtudProdDbContext, EtudiantsProfs.Migrations.Configuration>());
+        }
+
     }
 }
