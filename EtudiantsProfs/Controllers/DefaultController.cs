@@ -21,15 +21,27 @@ namespace EtudiantsProfs.Controllers
         [HttpPost]
         public ActionResult Index(Etudiant e)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(e); // revient au formulaire avec erreurs
+            }
             db = new EtudProdDbContext();
-            db.etudiants.Count();
-            int a = 12;
-            
 
-           // db.etudiants.Add(new Etudiant { Name = e.Name, Interet=e.Interet });
-            //db.SaveChanges();
 
-            return RedirectToAction("index", "Connexion");
+            if (!db.etudiants.Where(ma => ma.Email == e.Email).Any())
+            {
+                db.etudiants.Add(new Etudiant { Name = e.Name, Interet = e.Interet, Email = e.Email, MotDePasse = e.MotDePasse });
+                db.SaveChanges();
+
+                TempData["Success"] = "Étudiant ajouté avec succès";
+
+                return RedirectToAction("index", "Connexion");
+            }
+            else
+            {
+                ModelState.AddModelError("Email", "Cet email existe déjà");
+                return View(e);
+            }
         }
 
         public ActionResult Index2()
