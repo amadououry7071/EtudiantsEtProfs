@@ -37,6 +37,11 @@
         .card {
             border-radius: 12px;
         }
+        .btnEnBas{
+            position:fixed;
+            bottom:20px;
+            right:20px
+        }
     </style>
 </head>
 
@@ -80,12 +85,17 @@
                         @Html.ValidationMessageFor(m => m.MotDePasse, "", new { @class = "text-danger" })
                     </div>
 
-                    <button type="submit" class="btn btn-success w-100 fw-bold py-2">
+                    <button type="submit" style="margin-bottom:10px" class="btn btn-success w-100 fw-bold py-2">
                         Ajouter
+                    </button>
+                    <button type="reset" class="btn btn-success w-100 fw-bold py-2">
+                        Effacer
                     </button>
                 }
             </div>
-
+            <div class="btnEnBas">
+                @Html.ActionLink("Je suis Prof", "index2", "Default")
+            </div>
         </div>
     </div>
 

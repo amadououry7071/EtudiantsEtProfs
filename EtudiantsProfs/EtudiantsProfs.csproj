@@ -117,8 +117,8 @@
     <None Include="packages.config" />
     <Content Include="Views\Connexion\Index.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
-    <Content Include="Views\Default\Index2.cshtml" />
     <Content Include="Views\SameInterest\Index.cshtml" />
+    <Content Include="Views\Default\Index2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

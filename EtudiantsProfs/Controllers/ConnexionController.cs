@@ -16,21 +16,39 @@ namespace EtudiantsProfs.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(string Name)
+        public ActionResult Index(string Email,string MotDePasse)
         {
             db=new EtudProdDbContext();
-            var ceci=db.etudiants.Where(m=>m.Name==Name);
-            if (ceci.Any()) 
+            var verifEtu=db.etudiants.Where(e=>e.Email==Email && e.MotDePasse==MotDePasse );
+            if (verifEtu.Any())
             {
-                Session["name"]=Name;
-                return RedirectToAction("index", "SameInterest");
-            }
-            var cec=db.profs.Where(m => m.Name == Name);
-            if(cec.Any()) 
-            {
-                //
-            }
+                ViewBag.messageSucces = "Verification acceptee,Merci!";
                 return View();
+
+                //return RedirectToAction("index", "SameInterest");
+            }
+
+            else 
+            {
+                var cec = db.profs.Where(e => e.Email == Email && e.MotDePasse == MotDePasse);
+                if (cec.Any())
+                {
+                    ViewBag.messageSucces = "Verification acceptee,Merci!";
+                    return View();
+
+                    //return RedirectToAction("index", "SameInterest");
+                }
+                else
+                {
+                    ViewBag.error = "Desole,veuillez reessayer";
+                }
+
+            }
+
+
+
+            
+            return View();
         }
     }
 }

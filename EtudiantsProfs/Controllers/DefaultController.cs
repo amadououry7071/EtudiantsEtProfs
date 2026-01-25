@@ -52,11 +52,16 @@ namespace EtudiantsProfs.Controllers
         [HttpPost]
         public ActionResult Index2(Prof e)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(e); // revient au formulaire avec erreurs
+            }
             db = new EtudProdDbContext();
 
-            db.profs.Add(new Prof { Name = e.Name, Cour = e.Cour });
+            db.profs.Add(new Prof { Name = e.Name, Cour = e.Cour, Email=e.Email, MotDePasse=e.MotDePasse });
             db.SaveChanges();
 
+            TempData["ProfSuc"] = "Prof ajoute avec succes";
             return RedirectToAction("index", "Connexion");
         }
     }
