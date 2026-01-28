@@ -20,12 +20,13 @@ namespace EtudiantsProfs.Controllers
         {
             db=new EtudProdDbContext();
             var verifEtu=db.etudiants.Where(e=>e.Email==Email && e.MotDePasse==MotDePasse );
+            string nom = db.etudiants.Where(e => e.Email == Email).Select(e => e.Name).FirstOrDefault();
             if (verifEtu.Any())
             {
-                ViewBag.messageSucces = "Verification acceptee,Merci!";
-                return View();
+                Session["leNom"] = nom;
+                //ViewBag.messageSucces = "Verification acceptee,Merci!";
+                return RedirectToAction("index", "OffreEtudiants");
 
-                //return RedirectToAction("index", "SameInterest");
             }
 
             else 
@@ -33,10 +34,9 @@ namespace EtudiantsProfs.Controllers
                 var cec = db.profs.Where(e => e.Email == Email && e.MotDePasse == MotDePasse);
                 if (cec.Any())
                 {
-                    ViewBag.messageSucces = "Verification acceptee,Merci!";
-                    return View();
-
-                    //return RedirectToAction("index", "SameInterest");
+                    //ViewBag.messageSucces = "Verification acceptee,Merci!";
+                    return RedirectToAction("index", "OffreEtudiants");
+                    
                 }
                 else
                 {

@@ -102,7 +102,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ConnexionController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
-    <Compile Include="Controllers\SameInterestController.cs" />
+    <Compile Include="Controllers\OffreEtudiantsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -117,8 +117,8 @@
     <None Include="packages.config" />
     <Content Include="Views\Connexion\Index.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
-    <Content Include="Views\SameInterest\Index.cshtml" />
     <Content Include="Views\Default\Index2.cshtml" />
+    <Content Include="Views\OffreEtudiants\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
